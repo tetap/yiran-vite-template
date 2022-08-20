@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '../pages/HomeView.vue')
-  }
-]
+const libs: any = import.meta.glob('./libs/*.ts', { eager: true })
+
+const routes: RouteRecordRaw[] = []
+for (const lib in libs) {
+  routes.push(...libs[lib].default)
+}
 
 const router = createRouter({
   history: createWebHistory(),
