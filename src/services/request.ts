@@ -3,7 +3,7 @@ import { HttpStatusCode, HttpStatusMsg } from './httpStatusEnum'
 import type { IBaseResponse } from './IBaseResponse'
 
 // 前缀链接
-export const BASEURL = process.env.VUE_APP_API_SERVICE_URL!
+export const BASEURL = import.meta.env.VITE_APP_API_BASE_URL
 
 const baseService = axios.create({
   baseURL: BASEURL,
